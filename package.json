@@ -8,6 +8,8 @@
     "node": "15.2.0"
   },
   "main": "index.js",
+  "description": "",
+  "keywords": [],
   "author": "",
   "type": "module",
   "license": "MIT",
