@@ -13,10 +13,9 @@ export default (express, bodyParser, createReadStream, crypto, http, mongo) => {
         .use((r, res, next) => { r.res.set(CORS); next(); })
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({ extended: true }))
-        .get("/sha1/:input", ({ params }, res) => {
-             const { input } = params;
-             const hash = crypto.createHash("sha1").update(input).digest("hex");
-             res.send(hash);
+        .get('/sha1/:input', (req, res, next) => {
+            const encodedInput = crypto.createHash('sha1').update(req.params.input).digest('hex');
+            res.send(encodedInput);
         })
 
         .get('/login/', (req, res) => res.send(author))
